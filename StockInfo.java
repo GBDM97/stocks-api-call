@@ -2,6 +2,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class StockInfo {
     // @JsonProperty("Meta Data")
     // private String metaData;
@@ -9,11 +10,17 @@ public class StockInfo {
     // private String timeSeries;
 
     @SerializedName("Meta Data")
-    public String metaData;
+    StockInfo metaData;
 
     @SerializedName("Time Series (5min)")
-    public String timeSeries;
+    StockInfo timeSeries;
 
-    public String getM() { return metaData; }
-    public String getT() { return timeSeries; }
+    @SerializedName("3. Last Refreshed")
+    String last;
+    
+
+    public StockInfo getM() { return metaData; }
+    // public String getT() { return timeSeries; }
+    public String getL() { return last; }
+
 }
