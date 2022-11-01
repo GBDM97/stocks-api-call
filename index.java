@@ -27,7 +27,6 @@ public class index {
     HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
     String respons = response.body().toString();
     System.out.println(respons);
-
     StockInfo respon = gson.fromJson(respons, StockInfo.class);
     System.out.println(respon);
     }
