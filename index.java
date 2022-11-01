@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
+import com.google.gson.*;
 
-
-class get {
+public class index {
     public static void main(String[] args)throws IOException, InterruptedException{
+        Gson gson = new Gson();
         System.out.println("Enter Stock Ticker:");
         Scanner ticker = new Scanner(System.in);
         String u1 = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=";
@@ -21,6 +22,7 @@ class get {
             .method("GET", HttpRequest.BodyPublishers.noBody())
             .build();
     HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-    System.out.println(response.body());
+    StockInfo respons = gson.fromJson(response, StockInfo.class);
+    System.out.println(response);
     }
 }
